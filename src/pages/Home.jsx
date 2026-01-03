@@ -67,7 +67,7 @@ const Home = () => {
                 <div className="absolute -top-24 right-0 w-[400px] h-[400px] bg-blue-500/[0.05] blur-[100px] rounded-full -z-10"></div>
 
                 <div className="inline-flex items-center gap-2 bg-blue-600/10 border border-blue-600/20 px-5 py-2 rounded-full text-blue-500 text-[11px] font-bold mb-8 uppercase tracking-[0.3em] reveal">
-                    Topic AI-20: SE Portfolio Management
+                    Topik SE-20: SE Portfolio-Builder
                 </div>
 
                 <h2 className="text-5xl md:text-8xl font-black mb-8 tracking-tighter leading-[1] reveal">
@@ -76,10 +76,6 @@ const Home = () => {
                         Portfolio Builder
                     </span>
                 </h2>
-
-                <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-12 leading-relaxed reveal">
-                    Bangun transparansi dan keberlanjutan proyek AI dengan kerangka kerja dokumentasi strategis berbasis riset global.
-                </p>
 
                 <div className="flex flex-col sm:flex-row justify-center gap-6 reveal">
                     <a href="#product" className="group relative flex items-center justify-center gap-3 bg-blue-600 text-white px-10 py-5 rounded-full font-bold transition-all hover:bg-blue-500 hover:shadow-[0_0_30px_rgba(37,99,235,0.4)]">

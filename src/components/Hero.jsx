@@ -17,14 +17,9 @@ const Hero = () => {
             {/* Subtle Overlay to improve text readability */}
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#050505]/20 to-[#050505] -z-10 pointer-events-none"></div>
 
-            <div className="mb-8 flex gap-3 animate-fade-in-up">
-                <span className="bg-white/5 px-6 py-2.5 rounded-full text-sm font-semibold text-blue-300 shadow-lg border border-white/10 backdrop-blur-md">
-                    Explore over 3 million ready-to-use designs!
-                </span>
-            </div>
 
             <h1 className="text-4xl sm:text-6xl md:text-[5.5rem] font-black leading-[1.1] max-w-[1100px] mb-8 tracking-tighter text-white animate-fade-in-up slide-delay-1 drop-shadow-2xl">
-                Tadika Portfolio Builder <br className="hidden sm:block" /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-blue-400 to-cyan-300">Template Design</span>
+                Tadika Portfolio-Builder <br className="hidden sm:block" /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-blue-400 to-cyan-300">Template Design</span>
             </h1>
 
             <p className="text-lg md:text-2xl text-gray-400 max-w-[700px] mb-14 leading-relaxed font-medium animate-fade-in-up slide-delay-2 px-4">
