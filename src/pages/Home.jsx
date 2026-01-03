@@ -15,6 +15,11 @@ import { Link, useLocation } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
+// Team Member Photo Imports
+import hadiImg from '../assets/hadi.jpg';
+import rakaImg from '../assets/raka.jpg';
+import riyadImg from '../assets/riyad.jpeg';
+
 const Home = () => {
     const location = useLocation();
 
@@ -227,9 +232,9 @@ const Home = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 reveal">
                     {[
-                        { name: "Hadi Permana", role: "Developer", image: "src/assets/hadi.jpg", nim: "312210445" },
-                        { name: "Muhamad Rizky Raka Pratama", role: "Membuat Laporan", image: "src/assets/raka.jpg", nim: "312210397 " },
-                        { name: "Muhammad Riyadus Solihin", role: "Membuat Power Point", image: "src/assets/riyad.jpeg", nim: "312210404" }
+                        { name: "Hadi Permana", role: "Developer", image: hadiImg, nim: "312210445" },
+                        { name: "Muhamad Rizky Raka Pratama", role: "Membuat Laporan", image: rakaImg, nim: "312210397 " },
+                        { name: "Muhammad Riyadus Solihin", role: "Membuat Power Point", image: riyadImg, nim: "312210404" }
                     ].map((member, idx) => (
                         <div key={idx} className="group relative flex flex-col bg-[#0a0a0a] border border-white/5 rounded-[3rem] p-4 transition-all duration-700 hover:border-blue-600/30 hover:-translate-y-4 hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.8)]">
                             {/* Photo Card Area (Horizontal inside vertical grid) */}
