@@ -28,7 +28,7 @@ const Navbar = () => {
             });
         }, { threshold: 0.5 });
 
-        ['metodologi', 'product', 'team'].forEach(id => {
+        ['metodologi', 'product', 'team', 'contact'].forEach(id => {
             const el = document.getElementById(id);
             if (el) observer.observe(el);
         });
@@ -46,6 +46,7 @@ const Navbar = () => {
         { path: "/home", label: "Toolkit", hash: "#product" },
         { path: "/templates", label: "Templates", hash: "" },
         { path: "/home", label: "Tim", hash: "#team" },
+        { path: "/home", label: "Kontak", hash: "#contact" },
     ];
 
     const getLinkStyles = (path, hash) => {

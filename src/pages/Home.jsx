@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     Download,
     Users,
@@ -9,7 +9,8 @@ import {
     BarChart3,
     ArrowRight,
     Target,
-    FileText
+    FileText,
+    Send
 } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import Navbar from '../components/Navbar';
@@ -22,6 +23,23 @@ import riyadImg from '../assets/riyad.jpeg';
 
 const Home = () => {
     const location = useLocation();
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        message: ''
+    });
+
+    const handleSendMessage = (e) => {
+        e.preventDefault();
+        const { name, email, message } = formData;
+
+        // Construct detailed email body
+        const subject = encodeURIComponent(`Pesan dari Website: ${name}`);
+        const body = encodeURIComponent(`Nama: ${name}\nEmail: ${email}\n\nPesan:\n${message}`);
+
+        // Open default mail client
+        window.location.href = `mailto:dyyprmnaa10@gmail.com?subject=${subject}&body=${body}`;
+    };
 
     useEffect(() => {
         const observerOptions = {
@@ -105,7 +123,7 @@ const Home = () => {
                         <div className="mb-14 p-10 bg-blue-600/[0.04] border border-blue-500/10 rounded-[2.5rem] relative z-10">
                             <span className="text-blue-500 font-bold text-[10px] uppercase tracking-[0.3em] mb-4 block">Core Inquiry</span>
                             <p className="text-gray-200 leading-tight italic text-2xl md:text-3xl font-medium">
-                                "Elemen strategis dan teknis apa saja yang wajib hadir dalam dokumentasi portofolio proyek AI?"
+                                "Elemen strategis dan teknis apa saja yang wajib hadir dalam dokumentasi portofolio proyek SE?"
                             </p>
                         </div>
 
@@ -182,10 +200,10 @@ const Home = () => {
                                 </div>
                             </div>
 
-                            <button className="group relative bg-[#050505] text-white font-black py-7 px-14 rounded-full flex justify-center items-center gap-4 transition-all hover:scale-105 active:scale-95 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]">
+                            <a href="#" className="group relative bg-[#050505] text-white font-black py-7 px-14 rounded-full flex justify-center items-center gap-4 transition-all hover:scale-105 active:scale-95 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]">
                                 <Download size={24} className="group-hover:-translate-y-1 transition-transform" />
                                 UNDUH SE-20 TOOLKIT
-                            </button>
+                            </a>
                         </div>
 
                         <Link to="/templates" className="reveal group perspective-1000">
@@ -218,6 +236,42 @@ const Home = () => {
                 </div>
             </section>
 
+            {/* --- FAQ/DOCUMENTATION SECTION --- */}
+            <section id="documentation" className="py-32 px-6 max-w-7xl mx-auto scroll-mt-32">
+                <div className="text-center mb-20 reveal">
+                    <div className="inline-block px-4 py-1.5 bg-white/5 rounded-full border border-white/10 text-gray-500 text-[10px] font-bold uppercase tracking-[0.2em] mb-6">Knowledge Base</div>
+                    <h3 className="text-4xl md:text-6xl font-black mb-6 tracking-tight">Dokumentasi & FAQ</h3>
+                    <p className="text-gray-500 text-lg">Panduan penggunaan dan jawaban untuk pertanyaan umum</p>
+                </div>
+
+                <div className="grid lg:grid-cols-2 gap-6 reveal">
+                    <FAQItem
+                        question="Apa isi dari toolkit ini?"
+                        answer="Toolkit berisi template dokumentasi proyek AI (Word/Google Docs) dan master project list (Excel/Google Sheets) yang dapat langsung digunakan untuk standarisasi portofolio proyek AI di organisasi Anda."
+                    />
+                    <FAQItem
+                        question="Siapa yang sebaiknya menggunakan ini?"
+                        answer="Toolkit ini cocok untuk manajer IT, konsultan strategis, kepala divisi AI, atau siapa pun yang bertanggung jawab atas dokumentasi dan governance proyek teknologi di institusi pemerintah atau swasta."
+                    />
+                    <FAQItem
+                        question="Apakah toolkit ini gratis?"
+                        answer="Ya, toolkit ini dibuat sebagai hasil riset akademik dan tersedia gratis untuk keperluan edukasi dan implementasi di organisasi."
+                    />
+                    <FAQItem
+                        question="Bagaimana cara menggunakannya?"
+                        answer="Download file .zip, ekstrak, lalu buka template dokumen. Isi sesuai panduan yang tersedia di dalam file. Untuk master sheet, masukkan data proyek Anda mengikuti struktur yang sudah disediakan."
+                    />
+                    <FAQItem
+                        question="Standar apa yang digunakan?"
+                        answer="Toolkit mengacu pada standar ITPM (IT Portfolio Management), AI Ethics Governance, dan best practices dalam asset lifecycle management sesuai dengan standar industri global."
+                    />
+                    <FAQItem
+                        question="Bisakah disesuaikan dengan kebutuhan organisasi?"
+                        answer="Tentu saja! Template dirancang fleksibel dan dapat disesuaikan dengan konteks, skala, dan kebutuhan spesifik organisasi Anda."
+                    />
+                </div>
+            </section>
+
             {/* --- RESEARCH TEAM & CONTACT --- */}
             <section id="team" className="py-32 px-6 max-w-7xl mx-auto scroll-mt-32">
                 <div className="text-center mb-24 reveal">
@@ -228,9 +282,9 @@ const Home = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 reveal">
                     {[
-                        { name: "Hadi Permana", role: "Developer", image: hadiImg, nim: "312210445" },
-                        { name: "Muhamad Rizky Raka Pratama", role: "Membuat Laporan", image: rakaImg, nim: "312210397 " },
-                        { name: "Muhammad Riyadus Solihin", role: "Membuat Power Point", image: riyadImg, nim: "312210404" }
+                        { name: "Hadi Permana", role: "Perancang Produk", image: hadiImg, nim: "312210445" },
+                        { name: "Muhamad Rizky Raka Pratama", role: "Peneliti Literatur", image: rakaImg, nim: "312210397 " },
+                        { name: "Muhammad Riyadus Solihin", role: "Dokumentor & Presenter", image: riyadImg, nim: "312210404" }
                     ].map((member, idx) => (
                         <div key={idx} className="group relative flex flex-col bg-[#0a0a0a] border border-white/5 rounded-[3rem] p-4 transition-all duration-700 hover:border-blue-600/30 hover:-translate-y-4 hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.8)]">
                             {/* Photo Card Area (Horizontal inside vertical grid) */}
@@ -279,26 +333,56 @@ const Home = () => {
                             <div className="absolute -top-24 -left-24 w-64 h-64 bg-blue-600/10 blur-[80px] rounded-full group-hover:translate-x-12 transition-transform duration-1000"></div>
                             <div className="absolute -bottom-24 -right-24 w-64 h-64 bg-blue-500/10 blur-[80px] rounded-full group-hover:-translate-x-12 transition-transform duration-1000"></div>
 
-                            <div className="relative z-10">
+                            <div className="relative z-10 w-full max-w-2xl">
                                 <div className="w-16 h-16 bg-blue-600/10 rounded-2xl flex items-center justify-center mx-auto mb-8 border border-blue-500/20 group-hover:scale-110 transition-transform">
                                     <Mail className="text-blue-500" size={28} />
                                 </div>
 
-                                <h4 className="text-3xl md:text-5xl font-black mb-6 tracking-tighter leading-tight max-w-2xl">
-                                    Kembangkan Strategi AI <br />
-                                    <span className="text-blue-600">Terbaik Untuk Organisasi.</span>
+                                <h4 className="text-3xl md:text-5xl font-black mb-6 tracking-tighter leading-tight">
+                                    Hubungi Kami
                                 </h4>
 
-                                <p className="mb-10 text-gray-400 text-base md:text-lg leading-relaxed max-w-lg mx-auto font-medium opacity-80">
-                                    Konsultasikan implementasi dokumentasi aset AI yang berkelanjutan dan patuh standar global bersama kami.
+                                <p className="mb-10 text-gray-400 text-base md:text-lg leading-relaxed font-medium opacity-80">
+                                    Silakan isi formulir di bawah ini untuk berdiskusi lebih lanjut.
                                 </p>
 
-                                <div className="flex flex-col items-center gap-4">
-
-                                    <div className="flex items-center gap-2 text-gray-500 font-bold text-[10px] uppercase tracking-[0.3em] mt-4 opacity-60 group-hover:opacity-100 transition-all">
-                                        Hubungi Tim Kami <ArrowRight size={14} className="group-hover:translate-x-2 transition-transform" />
+                                <form className="flex flex-col gap-4 w-full text-left" onSubmit={handleSendMessage}>
+                                    <div className="grid md:grid-cols-2 gap-4">
+                                        <div className="relative">
+                                            <input
+                                                type="text"
+                                                placeholder="Nama Lengkap"
+                                                value={formData.name}
+                                                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                                                required
+                                                className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50 focus:bg-white/10 transition-all font-medium"
+                                            />
+                                        </div>
+                                        <div className="relative">
+                                            <input
+                                                type="email"
+                                                placeholder="Email Address"
+                                                value={formData.email}
+                                                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                                                required
+                                                className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50 focus:bg-white/10 transition-all font-medium"
+                                            />
+                                        </div>
                                     </div>
-                                </div>
+                                    <textarea
+                                        rows="4"
+                                        placeholder="Pesan Anda..."
+                                        value={formData.message}
+                                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                                        required
+                                        className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50 focus:bg-white/10 transition-all font-medium resize-none"
+                                    ></textarea>
+
+                                    <button type="submit" className="bg-blue-600 text-white font-bold py-4 px-8 rounded-2xl hover:bg-blue-500 hover:shadow-[0_10px_30px_rgba(37,99,235,0.3)] transition-all flex items-center justify-center gap-2 group/btn">
+                                        Kirim Pesan
+                                        <Send size={18} className="group-hover/btn:translate-x-1 transition-transform" />
+                                    </button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -332,5 +416,30 @@ const InfoCard = ({ icon, title, desc }) => (
         <p className="text-sm text-gray-500 leading-relaxed group-hover:text-gray-400 transition-colors">{desc}</p>
     </div>
 );
+
+const FAQItem = ({ question, answer }) => {
+    const [isOpen, setIsOpen] = React.useState(false);
+
+    return (
+        <div className="bg-white/[0.02] border border-white/5 rounded-[2rem] overflow-hidden hover:border-blue-500/20 transition-all">
+            <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="w-full text-left p-8 flex items-start justify-between gap-4 group"
+            >
+                <div className="flex-1">
+                    <h5 className="font-bold text-lg text-white group-hover:text-blue-400 transition-colors leading-tight">{question}</h5>
+                </div>
+                <div className={`flex-none w-8 h-8 rounded-full bg-blue-600/10 border border-blue-500/20 flex items-center justify-center transition-transform ${isOpen ? 'rotate-180' : ''}`}>
+                    <ArrowRight size={16} className="text-blue-500 rotate-90" />
+                </div>
+            </button>
+            <div className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-96' : 'max-h-0'}`}>
+                <div className="px-8 pb-8">
+                    <p className="text-gray-400 leading-relaxed">{answer}</p>
+                </div>
+            </div>
+        </div>
+    );
+};
 
 export default Home;
